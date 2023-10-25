@@ -3,6 +3,7 @@ import { View, Text, Button, TextInput } from 'react-native';
 import { useState } from 'react';
 import { Picker } from '@react-native-picker/picker';
 import playerData from '../data/playerData';
+import {styles} from '../styles/styles'
 
 function StartGame({ navigation }) {
 const [selectedPlayers, setSelectedPlayers] = useState(playerData.numberOfPlayers);
@@ -29,16 +30,19 @@ for (let i = 0; i < selectedPlayers; i++) {
   );
 }
   return (
-    <View>
-      <Text>Valitse pelimuoto!</Text>
-      {/* <Button
+    <View style={styles.container}>
+      
+      <Text style={styles.text}>Valitse pelimuoto!</Text>
+      <View style={styles.buttonContainer}>
+
+       <Button
         title="Palaa takaisin"
         onPress={() => navigation.navigate('Home')} // Navigate to the Home screen
-      />
-     <Picker
+        />
+     {/* <Picker
     selectedValue={selectedPlayers}
     onValueChange={(itemValue) => setSelectedPlayers(itemValue)}
-  >
+    >
     <Picker.Item label="1 Player" value={1} />
     <Picker.Item label="2 Players" value={2} />
     <Picker.Item label="3 Players" value={3} />
@@ -49,18 +53,20 @@ for (let i = 0; i < selectedPlayers; i++) {
     <Picker.Item label="8 Players" value={8} />
     <Picker.Item label="9 Players" value={9} />
     <Picker.Item label="10 Players" value={10} />
-  </Picker>
-  {playerInputFields} */}
+    </Picker>
+  {playerInputFields}  */}
   <Picker
     selectedValue={gameMode}
+    style={styles.picker}
     onValueChange={(itemValue) => {
       updateGameMode(itemValue); // Update the selected game mode in the imported file
     }}
-  >
+    >
   {playerData.gameModes.map((mode, index) => (
     <Picker.Item key={index} label={mode} value={mode} />
-  ))}
+    ))}
   </Picker> 
+    
         <Button
         title="Aloita pelaaminen"
         onPress={() => {if (gameMode == "Tutustuminen" || gameMode == undefined) {
@@ -68,7 +74,8 @@ for (let i = 0; i < selectedPlayers; i++) {
         }else {
           navigation.navigate('DrinkingGame')
         }} }
-      />
+        />
+        </View>
     </View>
   );
 }
