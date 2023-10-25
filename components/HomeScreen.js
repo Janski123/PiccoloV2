@@ -4,11 +4,12 @@ import { View, Text, Button } from 'react-native';
 function HomeScreen({ navigation }) {
   return (
     <View>
-      <Text>Home Screen</Text>
+      <Text>Tervetuloa pelaaman Piccolo V2!</Text>
       <Button
         title="Aloita pelaaminen"
         onPress={() => navigation.navigate('PelinAloitus')}
       />
+      <Text>© Jani Koponen 2023</Text>
     </View>
   );
 }

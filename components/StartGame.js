@@ -30,12 +30,12 @@ for (let i = 0; i < selectedPlayers; i++) {
 }
   return (
     <View>
-      <Text>Lisää pelaajat ja valitse pelimuoto!</Text>
-      <Button
+      <Text>Valitse pelimuoto!</Text>
+      {/* <Button
         title="Palaa takaisin"
         onPress={() => navigation.navigate('Home')} // Navigate to the Home screen
       />
-        <Picker
+     <Picker
     selectedValue={selectedPlayers}
     onValueChange={(itemValue) => setSelectedPlayers(itemValue)}
   >
@@ -50,7 +50,7 @@ for (let i = 0; i < selectedPlayers; i++) {
     <Picker.Item label="9 Players" value={9} />
     <Picker.Item label="10 Players" value={10} />
   </Picker>
-  {playerInputFields}
+  {playerInputFields} */}
   <Picker
     selectedValue={gameMode}
     onValueChange={(itemValue) => {
@@ -60,13 +60,14 @@ for (let i = 0; i < selectedPlayers; i++) {
   {playerData.gameModes.map((mode, index) => (
     <Picker.Item key={index} label={mode} value={mode} />
   ))}
-  </Picker>
-  <Button title='testaus'
-    onPress={() => console.log(playerNames + " " + gameMode)}
-  ></Button>
+  </Picker> 
         <Button
         title="Aloita pelaaminen"
-        onPress={() => navigation.navigate('Game')}
+        onPress={() => {if (gameMode == "Tutustuminen" || gameMode == undefined) {
+          navigation.navigate('Game')
+        }else {
+          navigation.navigate('DrinkingGame')
+        }} }
       />
     </View>
   );
