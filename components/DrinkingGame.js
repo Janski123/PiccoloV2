@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import playerData from '../data/playerData';
 
 
-function Game( questions) {
+function DrinkingGame( drinkingQuestions) {
   const navigation = useNavigation();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState('');
@@ -12,7 +12,7 @@ function Game( questions) {
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    if (currentQuestionIndex >= questions.questions.length) {
+    if (currentQuestionIndex >= drinkingQuestions.questions.length) {
       setGameOver(true);
     }
   }, [currentQuestionIndex]);
@@ -25,9 +25,9 @@ function Game( questions) {
 
   
 const handleNextQuestion = () => {
-  if (currentQuestionIndex < questions.questions.length - 1) {
+  if (currentQuestionIndex < drinkingQuestions.questions.length - 1) {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
-     setCurrentQuestion(questions.questions[currentQuestionIndex + 1]);
+     setCurrentQuestion(drinkingQuestions.questions[currentQuestionIndex + 1]);
   } else {
     setGameOver(true);
  }
@@ -50,4 +50,4 @@ const handleNextQuestion = () => {
   );
 }
 
-export default Game;
+export default DrinkingGame;
