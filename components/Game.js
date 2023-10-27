@@ -36,7 +36,10 @@ const handleNextQuestion = () => {
   return (
     <View style={styles.container}>
       {gameOver ? (
+        <View>
         <Text>Kysymykset loppuivat, kiitos pelaamisesta!</Text>
+        <Button title='Takaisin alkuun'onPress={() => navigation.navigate('Home')}></Button>
+        </View>
       ) : (
         <View>
           <Text style={styles.question}>
